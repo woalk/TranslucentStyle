@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="BarStyles">
+        <item >Change nothing</item>
+        <item >KitKat gradient</item>
+        <item >Darker KitKat gradient</item>
+        <item >Lighter KitKat gradient</item>
+        <item >Full transparent</item>
+        <item >Android “L” (solid)</item>
+        <item >Darker Android “L”</item>
+        <item >Lighter Android “L”</item>
+        <item >Sense 5 Style</item>
+    </string-array>
+    
+</resources>

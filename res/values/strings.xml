@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Translucent Style</string>
+    <string name="prefix_version">Version</string>
+    <string name="copyright_info">Created by Woalk Software\nxda-developers user woalk</string>
+    <string name="descr_status">Status Bar:</string>
+    <string name="descr_nav">Navigation Bar:</string>
+    <string name="btn_restart_systemui">Restart System UI to apply changes</string>
+    <string name="title_restart">Restart System UI</string>
+    <string name="msg_restart">Do you want to restart System UI to apply changes?\n<i>(Requires root permission and installed BusyBox)</i></string>
+
+</resources>

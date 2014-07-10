@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="nll">#00000000</color>
+    <color name="kk_dark">#ff000000</color>
+    <color name="kk_light">#55000000</color>
+    <color name="l">#30000000</color>
+    <color name="l_dark">#c0000000</color>
+    <color name="l_light">#12000000</color>
+    
+</resources>
