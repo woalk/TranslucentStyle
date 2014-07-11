@@ -1,8 +1,6 @@
 package com.woalk.apps.xposed.translucentstyle;
 
 import android.content.res.XModuleResources;
-import android.content.res.XResources;
-import android.graphics.drawable.Drawable;
 import de.robv.android.xposed.IXposedHookInitPackageResources;
 import de.robv.android.xposed.IXposedHookZygoteInit;
 import de.robv.android.xposed.XSharedPreferences;
