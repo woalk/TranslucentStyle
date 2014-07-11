@@ -20,6 +20,7 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
         <item name="android:actionBarStyle">@style/ActionBarTheme</item>
+        <item name="android:fastScrollEnabled">false</item>
     </style>
 
 </resources>
