@@ -47,6 +47,26 @@ public class Statics {
 				return R.drawable.sense5status;
 			else
 				return R.drawable.sense5nav;
+		case 9:
+			if (!isNav)
+				return R.drawable.carblend_status;
+			else
+				return R.drawable.carblend_nav;
+		case 10:
+			if (!isNav)
+				return R.drawable.halo_status;
+			else
+				return R.drawable.halo_nav;
+		case 11:
+			if (!isNav)
+				return R.drawable.bracket_status;
+			else
+				return R.drawable.bracket_nav;
+		case 12:
+			if (!isNav)
+				return R.drawable.cutter_status;
+			else
+				return R.drawable.cutter_nav;
 		default:
 			return -1;
 		}
