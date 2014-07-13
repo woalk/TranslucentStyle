@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_marginBottom="14dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginBottom="14dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" >
+
+        <TableRow
+            android:id="@+id/tableRow_predef"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tv_predef"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:labelFor="@+id/spinner_predef"
+                android:text="@string/descr_predef" />
+
+            <Spinner
+                android:id="@+id/spinner_predef"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/predef_solid" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow_a"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tv_a"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="4dp"
+                android:labelFor="@+id/seek_a"
+                android:text="@string/descr_alpha" />
+
+            <SeekBar
+                android:id="@+id/seek_a"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="255" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow_r"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tv_r"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="4dp"
+                android:labelFor="@+id/seek_r"
+                android:text="@string/descr_red" />
+
+            <SeekBar
+                android:id="@+id/seek_r"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="255" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow_g"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tv_g"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="4dp"
+                android:labelFor="@+id/seek_g"
+                android:text="@string/descr_green" />
+
+            <SeekBar
+                android:id="@+id/seek_g"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="255" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow_b"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/tv_b"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="4dp"
+                android:labelFor="@+id/seek_b"
+                android:text="@string/descr_blue" />
+
+            <SeekBar
+                android:id="@+id/seek_b"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="255" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_hex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" >
+
+        <TextView
+            android:id="@+id/tv_hex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:labelFor="@+id/edit_hex"
+            android:text="@string/descr_hex" />
+
+        <EditText
+            android:id="@+id/edit_hex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="@string/hint_hex"
+            android:inputType="textVisiblePassword"
+            android:maxLength="9"
+            android:digits="0123456789ABCDEFabcdef#" >
+
+            <requestFocus />
+        </EditText>
+
+    </LinearLayout>
+    
+</LinearLayout>

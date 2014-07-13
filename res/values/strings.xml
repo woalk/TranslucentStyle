@@ -9,5 +9,28 @@
     <string name="btn_restart_systemui">Restart System UI to apply changes</string>
     <string name="title_restart">Restart System UI</string>
     <string name="msg_restart">Do you want to restart System UI to apply changes?\n<i>(Requires root permission and installed BusyBox)</i></string>
-
+	<string name="str_edit">Customize&#8230;</string>
+	<string name="descr_alpha">Opacity:</string>
+	<string name="descr_red">Red:</string>
+	<string name="descr_green">Green:</string>
+	<string name="descr_blue">Blue:</string>
+	<string name="descr_hex">Hex code:</string>
+	<string name="descr_predef">Defaults:</string>
+	<string name="str_no_change">Change nothing</string>
+	<string name="str_kitkat">KitKat gradient</string>
+	<string name="str_gradient">Custom Gradient</string>
+	<string name="str_nothing">Fully transparent</string>
+	<string name="str_solid">Solid</string>
+	<string name="str_sense5">Sense 5</string>
+	<string name="str_carblend">“CarBlend”</string>
+	<string name="str_halo">“Halo” gradient</string>
+	<string name="str_bracket">“Bracket” gradient</string>
+	<string name="str_cutter">“Cutter”</string>
+	<string name="str_xperia">Xperia</string>
+	<string name="str_android_l">Android “L”</string>
+	<string name="str_sense6">Sense 6</string>
+	<string name="str_custom">Custom</string>
+	
+	<string name="hint_hex" translatable="false">#AARRGGBB</string>
+	
 </resources>

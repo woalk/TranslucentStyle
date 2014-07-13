@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="BarStyles">
-        <item >Change nothing</item>
-        <item >KitKat gradient</item>
-        <item >Darker KitKat gradient</item>
-        <item >Lighter KitKat gradient</item>
-        <item >Full transparent</item>
-        <item >Android “L” (solid)</item>
-        <item >Darker Android “L”</item>
-        <item >Lighter Android “L”</item>
-        <item >Sense 5 Style</item>
-        <item >“CarBlend”</item>
-        <item >“Halo” gradient</item>
-        <item >“Bracket” gradient</item>
-        <item >“Cutter”</item>
+        <item>@string/str_no_change</item>
+        <item>@string/str_kitkat</item>
+        <item>@string/str_gradient</item>
+        <item>@string/str_nothing</item>
+        <item>@string/str_solid</item>
+        <item>@string/str_sense5</item>
+        <item>@string/str_carblend</item>
+        <item>@string/str_halo</item>
+        <item>@string/str_bracket</item>
+        <item>@string/str_cutter</item>
+        <item>@string/str_xperia</item>
+    </string-array>
+    <string-array name="predef_solid">
+        <item>@string/str_custom</item>
+        <item>@string/str_android_l</item>
+        <item>@string/str_sense6</item>
     </string-array>
     
 </resources>

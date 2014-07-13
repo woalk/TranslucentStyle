@@ -40,7 +40,8 @@ public class MainActivity extends Activity {
 		PackageInfo pInfo = null;
 		try {
 			pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
-		((TextView) findViewById(R.id.textView_info)).setText(getString(R.string.copyright_info) + "\n\n" + getString(R.string.prefix_version) + " " + pInfo.versionName);
+			((TextView) findViewById(R.id.textView_info)).setText(
+				getString(R.string.copyright_info) + "\n\n" + getString(R.string.prefix_version) + " " + pInfo.versionName);
 		} catch (NameNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -56,9 +57,11 @@ public class MainActivity extends Activity {
 				SharedPreferences.Editor edit = sPref.edit();
 				edit.putInt(Statics.PREF_STATUSDRAWABLE, position);
 				edit.apply();
-				view_status.setBackgroundResource(Statics.getDrawable(position, false));
+				int color = sPref.getInt(Statics.PREF_COLOR_STATUS, -1);
+				if (color == -1) color = 0x50000000;
+				view_status.setBackground(Statics.getDrawable(position, false, color, MainActivity.this.getApplicationContext()));
+				findViewById(R.id.button2).setEnabled(Statics.isCustomizable(position));
 			}
-
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) {
 			}
@@ -69,9 +72,11 @@ public class MainActivity extends Activity {
 				SharedPreferences.Editor edit = sPref.edit();
 				edit.putInt(Statics.PREF_NAVDRAWABLE, position);
 				edit.apply();
-				view_nav.setBackgroundResource(Statics.getDrawable(position, true));
+				int color = sPref.getInt(Statics.PREF_COLOR_NAV, -1);
+				if (color == -1) color = 0x50000000;
+				view_nav.setBackground(Statics.getDrawable(position, true, color, MainActivity.this.getApplicationContext()));
+				findViewById(R.id.button3).setEnabled(Statics.isCustomizable(position));
 			}
-
 			@Override
 			public void onNothingSelected(AdapterView<?> parent) {
 			}
@@ -88,7 +93,7 @@ public class MainActivity extends Activity {
 					public void onClick(DialogInterface dialog, int which) {
 						try {
 							Process proc = Runtime.getRuntime()
-									.exec(new String[]{ "su", "-c", "busybox killall com.android.systemui"});
+									.exec(new String[]{ "su", "-c", "busybox killall " + Statics.SYSTEMUI});
 							proc.waitFor();
 						} catch (Exception ex) {
 							ex.printStackTrace();
@@ -97,6 +102,48 @@ public class MainActivity extends Activity {
 				});
 				builder.setNegativeButton(android.R.string.no, null);
 				builder.show();
+			}
+		});
+		
+		findViewById(R.id.button2).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				final int position = spinner_status.getSelectedItemPosition();
+				int color = sPref.getInt(Statics.PREF_COLOR_STATUS, -1);
+				if (color == -1) color = 0x50000000;
+				ConfigController cc = new ConfigController(MainActivity.this, false, position, color);
+				cc.setConfigControllerListener(new ConfigController.ConfigControllerListener() {
+					@Override
+					public void onResult(int color) {
+						SharedPreferences.Editor edit = sPref.edit();
+						edit.putInt(Statics.PREF_COLOR_STATUS, color);
+						edit.apply();
+						view_status.setBackground(Statics.getDrawable(position, false,
+								color, MainActivity.this.getApplicationContext()));
+					}
+				});
+				cc.show(getFragmentManager(), "cc");
+			}
+		});
+		
+		findViewById(R.id.button3).setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				final int position = spinner_nav.getSelectedItemPosition();
+				int color = sPref.getInt(Statics.PREF_COLOR_NAV, -1);
+				if (color == -1) color = 0x50000000;
+				ConfigController cc = new ConfigController(MainActivity.this, true, position, color);
+				cc.setConfigControllerListener(new ConfigController.ConfigControllerListener() {
+					@Override
+					public void onResult(int color) {
+						SharedPreferences.Editor edit = sPref.edit();
+						edit.putInt(Statics.PREF_COLOR_NAV, color);
+						edit.apply();
+						view_nav.setBackground(Statics.getDrawable(position, true,
+								color, MainActivity.this.getApplicationContext()));
+					}
+				});
+				cc.show(getFragmentManager(), "cc");
 			}
 		});
 	}
