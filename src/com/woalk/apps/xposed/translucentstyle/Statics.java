@@ -8,15 +8,26 @@ import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.GradientDrawable.Orientation;
 
 public class Statics {
-	private Statics() { }
+	private Statics() {
+	}
 
 	public static final String SYSTEMUI = "com.android.systemui";
 	public static final String PACKAGENAME = "com.woalk.apps.xposed.translucentstyle";
 	public static final String PREFERENCE_NAME = PACKAGENAME + ".MAINPREF";
-	public static final String PREF_STATUSDRAWABLE = PACKAGENAME + ".PREF_STATUSDRAWABLE"; // int preference
-	public static final String PREF_NAVDRAWABLE = PACKAGENAME + ".PREF_NAVDRAWABLE";       // int preference
-	public static final String PREF_COLOR_STATUS = PACKAGENAME + ".PREF_COLOR_STATUS";     // int preference
-	public static final String PREF_COLOR_NAV = PACKAGENAME + ".PREF_COLOR_NAV";           // int preference
+	public static final String PREF_STATUSDRAWABLE = PACKAGENAME
+			+ ".PREF_STATUSDRAWABLE"; // int preference
+	public static final String PREF_NAVDRAWABLE = PACKAGENAME
+			+ ".PREF_NAVDRAWABLE"; // int preference
+	public static final String PREF_COLOR_STATUS = PACKAGENAME
+			+ ".PREF_COLOR_STATUS"; // int preference
+	public static final String PREF_COLOR_NAV = PACKAGENAME + ".PREF_COLOR_NAV"; // int
+																					// preference
+	public static final String PREF_RES1 = PACKAGENAME + ".PREF_RES1"; // boolean
+																		// preference
+	public static final String PREF_RES2 = PACKAGENAME + ".PREF_RES2"; // boolean
+																		// preference
+	public static final String PREF_M = PACKAGENAME + ".PREF_M"; // boolean
+																	// preference
 
 	public static final int VALUE_NO_CHANGE = 0;
 	public static final int VALUE_KITKAT = 1;
@@ -29,19 +40,18 @@ public class Statics {
 	public static final int VALUE_BRACKET = 8;
 	public static final int VALUE_CUTTER = 9;
 	public static final int VALUE_XPERIA = 10;
-	
+
 	public static boolean isBitmap(int style) {
-		return (style != VALUE_SOLID &&
-				style != VALUE_GRADIENT &&
-				style != VALUE_NO_CHANGE &&
-				style != VALUE_NOTHING);
+		return (style != VALUE_SOLID && style != VALUE_GRADIENT
+				&& style != VALUE_NO_CHANGE && style != VALUE_NOTHING);
 	}
-	
+
 	public static boolean isCustomizable(int style) {
 		return (style == VALUE_GRADIENT || style == VALUE_SOLID);
 	}
-	
-	public static Drawable getDrawable(int style, boolean isNav, int color, Context tsContext) {
+
+	public static Drawable getDrawable(int style, boolean isNav, int color,
+			Context tsContext) {
 		switch (style) {
 		case VALUE_NO_CHANGE:
 			return null;
@@ -71,17 +81,21 @@ public class Statics {
 	}
 
 	public static class Drawables {
-		public static Drawable getKitKatGradient(boolean isNav, Context tsContext) {
+		public static Drawable getKitKatGradient(boolean isNav,
+				Context tsContext) {
 			if (!isNav)
-				return tsContext.getResources().getDrawable(R.drawable.status_kkgradient);
+				return tsContext.getResources().getDrawable(
+						R.drawable.status_kkgradient);
 			else
-				return tsContext.getResources().getDrawable(R.drawable.nav_kkgradient);
+				return tsContext.getResources().getDrawable(
+						R.drawable.nav_kkgradient);
 		}
 
 		public static Drawable getGradient(boolean isNav, int color) {
-			int color2 = Color.argb(0, Color.red(color), Color.green(color), Color.blue(color));
-			return new GradientDrawable((!isNav ? Orientation.TOP_BOTTOM : Orientation.BOTTOM_TOP),
-					new int[]{color, color2});
+			int color2 = Color.argb(0, Color.red(color), Color.green(color),
+					Color.blue(color));
+			return new GradientDrawable((!isNav ? Orientation.TOP_BOTTOM
+					: Orientation.BOTTOM_TOP), new int[] { color, color2 });
 		}
 
 		public static Drawable getEmpty() {
@@ -91,53 +105,70 @@ public class Statics {
 		public static Drawable getSolid(int color) {
 			return new ColorDrawable(color);
 		}
-		
+
 		public static Drawable getSense5(boolean isNav, Context tsContext) {
 			if (!isNav)
-				return tsContext.getResources().getDrawable(R.drawable.sense5status);
+				return tsContext.getResources().getDrawable(
+						R.drawable.sense5status);
 			else
-				return tsContext.getResources().getDrawable(R.drawable.sense5nav);
+				return tsContext.getResources().getDrawable(
+						R.drawable.sense5nav);
 		}
 
 		public static Drawable getCarBlend(boolean isNav, Context tsContext) {
 			if (!isNav)
-				return tsContext.getResources().getDrawable(R.drawable.carblend_status);
+				return tsContext.getResources().getDrawable(
+						R.drawable.carblend_status);
 			else
-				return tsContext.getResources().getDrawable(R.drawable.carblend_nav);
+				return tsContext.getResources().getDrawable(
+						R.drawable.carblend_nav);
 		}
 
 		public static Drawable getHaloGradient(boolean isNav, Context tsContext) {
 			if (!isNav)
-				return tsContext.getResources().getDrawable(R.drawable.halo_status);
+				return tsContext.getResources().getDrawable(
+						R.drawable.halo_status);
 			else
-				return tsContext.getResources().getDrawable(R.drawable.halo_nav);
+				return tsContext.getResources()
+						.getDrawable(R.drawable.halo_nav);
 		}
 
-		public static Drawable getBracketGradient(boolean isNav, Context tsContext) {
+		public static Drawable getBracketGradient(boolean isNav,
+				Context tsContext) {
 			if (!isNav)
-				return tsContext.getResources().getDrawable(R.drawable.bracket_status);
+				return tsContext.getResources().getDrawable(
+						R.drawable.bracket_status);
 			else
-				return tsContext.getResources().getDrawable(R.drawable.bracket_nav);
+				return tsContext.getResources().getDrawable(
+						R.drawable.bracket_nav);
 		}
 
 		public static Drawable getCutter(boolean isNav, Context tsContext) {
 			if (!isNav)
-				return tsContext.getResources().getDrawable(R.drawable.cutter_status);
+				return tsContext.getResources().getDrawable(
+						R.drawable.cutter_status);
 			else
-				return tsContext.getResources().getDrawable(R.drawable.cutter_nav);
+				return tsContext.getResources().getDrawable(
+						R.drawable.cutter_nav);
 		}
-		
+
 		public static Drawable getXperia(boolean isNav, Context tsContext) {
 			if (!isNav)
-				return tsContext.getResources().getDrawable(R.drawable.xperia_status);
+				return tsContext.getResources().getDrawable(
+						R.drawable.xperia_status);
 			else
-				return tsContext.getResources().getDrawable(R.drawable.xperia_nav);
+				return tsContext.getResources().getDrawable(
+						R.drawable.xperia_nav);
 		}
 	}
 
 	public static int getColor(String colorHex) {
-		if (!colorHex.startsWith("#")) colorHex = "#" + colorHex;
-		int a; int r; int g; int b;
+		if (!colorHex.startsWith("#"))
+			colorHex = "#" + colorHex;
+		int a;
+		int r;
+		int g;
+		int b;
 		if (colorHex.length() == 7) {
 			a = 0xFF;
 			r = Integer.parseInt(colorHex.substring(1, 3), 16);
@@ -148,21 +179,26 @@ public class Statics {
 			r = Integer.parseInt(colorHex.substring(3, 5), 16);
 			g = Integer.parseInt(colorHex.substring(5, 7), 16);
 			b = Integer.parseInt(colorHex.substring(7, 9), 16);
-		} else return Color.BLACK;
+		} else
+			return Color.BLACK;
 		int c = Color.argb(a, r, g, b);
 		return c;
 	}
-	
+
 	public static String getColorHexString(int color) {
 		String colorHex = "#";
 		String a = Integer.toHexString(Color.alpha(color));
-		if (a.length() == 1) a = "0" + a;
+		if (a.length() == 1)
+			a = "0" + a;
 		String r = Integer.toHexString(Color.red(color));
-		if (r.length() == 1) r = "0" + r;
+		if (r.length() == 1)
+			r = "0" + r;
 		String g = Integer.toHexString(Color.green(color));
-		if (g.length() == 1) g = "0" + g;
+		if (g.length() == 1)
+			g = "0" + g;
 		String b = Integer.toHexString(Color.blue(color));
-		if (b.length() == 1) b = "0" + b;
+		if (b.length() == 1)
+			b = "0" + b;
 		colorHex += a + r + g + b;
 		return colorHex;
 	}
