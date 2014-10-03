@@ -80,8 +80,7 @@ public class X_TranslucentStyle_Hook implements
 							});
 				}
 			} catch (Throwable e) {
-				XposedBridge
-						.log("AOSP SystemUI status bar resource not present.");
+				XposedBridge.log(e);
 			}
 			try {
 				if (XsPref.getBoolean(Statics.PREF_RES2, true)) {
@@ -116,8 +115,7 @@ public class X_TranslucentStyle_Hook implements
 							});
 				}
 			} catch (Throwable e) {
-				XposedBridge
-						.log("HTC SystemUI status bar resource not present.");
+				XposedBridge.log(e);
 			}
 		}
 		if (nav_style > 0) {
@@ -153,8 +151,7 @@ public class X_TranslucentStyle_Hook implements
 							});
 				}
 			} catch (Throwable e) {
-				XposedBridge
-						.log("AOSP SystemUI navigation bar resource not present.");
+				XposedBridge.log(e);
 			}
 			try {
 				if (XsPref.getBoolean(Statics.PREF_RES2, true)) {
@@ -276,7 +273,7 @@ public class X_TranslucentStyle_Hook implements
 				});
 			}
 		} catch (Throwable e) {
-			e.printStackTrace();
+			XposedBridge.log(e);
 		}
 	}
 }
