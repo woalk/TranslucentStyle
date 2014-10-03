@@ -28,6 +28,8 @@ public class Statics {
 																		// preference
 	public static final String PREF_M = PACKAGENAME + ".PREF_M"; // boolean
 																	// preference
+	public static final String PREF_CM = PACKAGENAME + ".PREF_CM"; // boolean
+																	// preference
 
 	public static final int VALUE_NO_CHANGE = 0;
 	public static final int VALUE_KITKAT = 1;

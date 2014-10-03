@@ -36,4 +36,6 @@
 	
 	<string name="hint_hex" translatable="false">#AARRGGBB</string>
 	
+	<string name="str_check_cm">Try replacing CyanogenMod variable</string>
+	
 </resources>

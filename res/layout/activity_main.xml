@@ -96,7 +96,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignLeft="@id/textView2"
-            android:layout_below="@+id/checkBox3"
+            android:layout_below="@+id/checkBox4"
             android:layout_marginBottom="24dp"
             android:layout_marginTop="6dp"
             android:maxHeight="52dp"
@@ -133,6 +133,14 @@
             android:layout_alignLeft="@+id/checkBox2"
             android:layout_below="@+id/checkBox2"
             android:text="@string/str_check_m" />
+
+        <CheckBox
+            android:id="@+id/checkBox4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/checkBox3"
+            android:layout_below="@+id/checkBox3"
+            android:text="@string/str_check_cm" />
         
     </RelativeLayout>
 
