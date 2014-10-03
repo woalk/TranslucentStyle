@@ -179,10 +179,10 @@ public class MainActivity extends Activity {
 			}
 		});
 
-		boolean res1 = sPref.getBoolean(Statics.PREF_RES1, true);
-		boolean res2 = sPref.getBoolean(Statics.PREF_RES2, true);
-		boolean m = sPref.getBoolean(Statics.PREF_M, true);
-		boolean cm = sPref.getBoolean(Statics.PREF_CM, true);
+		boolean res1 = sPref.getBoolean(Statics.PREF_RES1, false);
+		boolean res2 = sPref.getBoolean(Statics.PREF_RES2, false);
+		boolean m = sPref.getBoolean(Statics.PREF_M, false);
+		boolean cm = sPref.getBoolean(Statics.PREF_CM, false);
 
 		CheckBox check1 = ((CheckBox) findViewById(R.id.checkBox1));
 		CheckBox check2 = ((CheckBox) findViewById(R.id.checkBox2));
