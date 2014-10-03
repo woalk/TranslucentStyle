@@ -2,14 +2,11 @@ package com.woalk.apps.xposed.translucentstyle;
 
 import android.app.AndroidAppHelper;
 import android.content.Context;
+import android.content.res.XResources;
 import android.graphics.drawable.Drawable;
 import android.view.View;
-
-import android.content.res.XModuleResources;
-import android.content.res.XResources;
 import de.robv.android.xposed.IXposedHookInitPackageResources;
 import de.robv.android.xposed.IXposedHookLoadPackage;
-import de.robv.android.xposed.IXposedHookZygoteInit;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
@@ -69,7 +66,7 @@ public class X_TranslucentStyle_Hook implements
 																.getApplicationContext()
 																.createPackageContext(
 																		Statics.PACKAGENAME,
-																		0));
+																		Context.CONTEXT_IGNORE_SECURITY));
 									else {
 										int color = XsPref.getInt(
 												Statics.PREF_COLOR_STATUS, -1);
@@ -105,7 +102,7 @@ public class X_TranslucentStyle_Hook implements
 																.getApplicationContext()
 																.createPackageContext(
 																		Statics.PACKAGENAME,
-																		0));
+																		Context.CONTEXT_IGNORE_SECURITY));
 									else {
 										int color = XsPref.getInt(
 												Statics.PREF_COLOR_STATUS, -1);
@@ -143,7 +140,7 @@ public class X_TranslucentStyle_Hook implements
 																.getApplicationContext()
 																.createPackageContext(
 																		Statics.PACKAGENAME,
-																		0));
+																		Context.CONTEXT_IGNORE_SECURITY));
 									else {
 										int color = XsPref.getInt(
 												Statics.PREF_COLOR_NAV, -1);
@@ -178,7 +175,7 @@ public class X_TranslucentStyle_Hook implements
 																.getApplicationContext()
 																.createPackageContext(
 																		Statics.PACKAGENAME,
-																		0));
+																		Context.CONTEXT_IGNORE_SECURITY));
 									else {
 										int color = XsPref.getInt(
 												Statics.PREF_COLOR_NAV, -1);
@@ -191,8 +188,7 @@ public class X_TranslucentStyle_Hook implements
 							});
 				}
 			} catch (Throwable e) {
-				XposedBridge
-						.log("HTC SystemUI navigation bar resource not present.");
+				XposedBridge.log(e);
 			}
 		}
 	}
@@ -229,7 +225,7 @@ public class X_TranslucentStyle_Hook implements
 									thisObj, "mView");
 							Context tsContext = v.getContext()
 									.createPackageContext(Statics.PACKAGENAME,
-											0);
+											Context.CONTEXT_IGNORE_SECURITY);
 							XposedHelpers.setObjectField(barBackground,
 									"mGradient", Statics.getDrawable(nav_style,
 											false, -1, tsContext));
@@ -263,7 +259,7 @@ public class X_TranslucentStyle_Hook implements
 									thisObj, "mView");
 							Context tsContext = v.getContext()
 									.createPackageContext(Statics.PACKAGENAME,
-											0);
+											Context.CONTEXT_IGNORE_SECURITY);
 							XposedHelpers.setObjectField(barBackground,
 									"mGradient", Statics.getDrawable(nav_style,
 											true, -1, tsContext));
