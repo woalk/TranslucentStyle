@@ -16,7 +16,7 @@ import de.robv.android.xposed.callbacks.XC_InitPackageResources.InitPackageResou
 import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 
 public class X_TranslucentStyle_Hook implements
-		/* IXposedHookZygoteInit, */IXposedHookInitPackageResources,
+/* IXposedHookZygoteInit, */IXposedHookInitPackageResources,
 		IXposedHookLoadPackage {
 	/*
 	 * -- Deprecated. --
@@ -199,79 +199,95 @@ public class X_TranslucentStyle_Hook implements
 			final XSharedPreferences XsPref = new XSharedPreferences(
 					Statics.PACKAGENAME, Statics.PREFERENCE_NAME);
 
-			if (!XsPref.getBoolean(Statics.PREF_M, false))
-				return;
+			if (XsPref.getBoolean(Statics.PREF_M, false)) {
 
-			final int status_style = XsPref.getInt(Statics.PREF_STATUSDRAWABLE,
-					0);
-			final int nav_style = XsPref.getInt(Statics.PREF_NAVDRAWABLE, 0);
+				final int status_style = XsPref.getInt(
+						Statics.PREF_STATUSDRAWABLE, 0);
+				final int nav_style = XsPref
+						.getInt(Statics.PREF_NAVDRAWABLE, 0);
 
-			if (status_style > 0 && status_style < 11) {
-				Class<?> clazz = XposedHelpers.findClass(Statics.SYSTEMUI
-						+ ".statusbar.phone.PhoneStatusBarTransitions",
-						lpparam.classLoader);
+				if (status_style > 0 && status_style < 11) {
+					Class<?> clazz = XposedHelpers.findClass(Statics.SYSTEMUI
+							+ ".statusbar.phone.PhoneStatusBarTransitions",
+							lpparam.classLoader);
 
-				XposedBridge.hookAllConstructors(clazz, new XC_MethodHook() {
-					@Override
-					protected void afterHookedMethod(MethodHookParam param)
-							throws Throwable {
-						Object thisObj = param.thisObject;
-						Object barBackground = XposedHelpers.getObjectField(
-								thisObj, "mBarBackground");
-						if (Statics.isBitmap(status_style)) {
-							View v = (View) XposedHelpers.getObjectField(
-									thisObj, "mView");
-							Context tsContext = v.getContext()
-									.createPackageContext(Statics.PACKAGENAME,
-											Context.CONTEXT_IGNORE_SECURITY);
-							XposedHelpers.setObjectField(barBackground,
-									"mGradient", Statics.getDrawable(nav_style,
-											false, -1, tsContext));
-						} else {
-							int color = XsPref.getInt(
-									Statics.PREF_COLOR_STATUS, -1);
-							if (color == -1)
-								color = 0x50000000;
-							XposedHelpers.setObjectField(barBackground,
-									"mGradient", Statics.getDrawable(
-											status_style, false, color, null));
-						}
-					}
-				});
-			}
+					XposedBridge.hookAllConstructors(clazz,
+							new XC_MethodHook() {
+								@Override
+								protected void afterHookedMethod(
+										MethodHookParam param) throws Throwable {
+									Object thisObj = param.thisObject;
+									Object barBackground = XposedHelpers
+											.getObjectField(thisObj,
+													"mBarBackground");
+									if (Statics.isBitmap(status_style)) {
+										View v = (View) XposedHelpers
+												.getObjectField(thisObj,
+														"mView");
+										Context tsContext = v
+												.getContext()
+												.createPackageContext(
+														Statics.PACKAGENAME,
+														Context.CONTEXT_IGNORE_SECURITY);
+										XposedHelpers.setObjectField(
+												barBackground, "mGradient",
+												Statics.getDrawable(nav_style,
+														false, -1, tsContext));
+									} else {
+										int color = XsPref.getInt(
+												Statics.PREF_COLOR_STATUS, -1);
+										if (color == -1)
+											color = 0x50000000;
+										XposedHelpers.setObjectField(
+												barBackground, "mGradient",
+												Statics.getDrawable(
+														status_style, false,
+														color, null));
+									}
+								}
+							});
+				}
 
-			if (nav_style > 0 && nav_style < 11) {
-				Class<?> clazz = XposedHelpers.findClass(Statics.SYSTEMUI
-						+ ".statusbar.phone.NavigationBarTransitions",
-						lpparam.classLoader);
+				if (nav_style > 0 && nav_style < 11) {
+					Class<?> clazz = XposedHelpers.findClass(Statics.SYSTEMUI
+							+ ".statusbar.phone.NavigationBarTransitions",
+							lpparam.classLoader);
 
-				XposedBridge.hookAllConstructors(clazz, new XC_MethodHook() {
-					@Override
-					protected void afterHookedMethod(MethodHookParam param)
-							throws Throwable {
-						Object thisObj = param.thisObject;
-						Object barBackground = XposedHelpers.getObjectField(
-								thisObj, "mBarBackground");
-						if (Statics.isBitmap(nav_style)) {
-							View v = (View) XposedHelpers.getObjectField(
-									thisObj, "mView");
-							Context tsContext = v.getContext()
-									.createPackageContext(Statics.PACKAGENAME,
-											Context.CONTEXT_IGNORE_SECURITY);
-							XposedHelpers.setObjectField(barBackground,
-									"mGradient", Statics.getDrawable(nav_style,
-											true, -1, tsContext));
-						} else {
-							int color = XsPref.getInt(Statics.PREF_COLOR_NAV,
-									-1);
-							if (color == -1)
-								color = 0x50000000;
-							XposedHelpers.setObjectField(barBackground,
-									"mGradient", Statics.getDrawable(nav_style,
-											true, color, null));
-						}
-					}
-				});
+					XposedBridge.hookAllConstructors(clazz,
+							new XC_MethodHook() {
+								@Override
+								protected void afterHookedMethod(
+										MethodHookParam param) throws Throwable {
+									Object thisObj = param.thisObject;
+									Object barBackground = XposedHelpers
+											.getObjectField(thisObj,
+													"mBarBackground");
+									if (Statics.isBitmap(nav_style)) {
+										View v = (View) XposedHelpers
+												.getObjectField(thisObj,
+														"mView");
+										Context tsContext = v
+												.getContext()
+												.createPackageContext(
+														Statics.PACKAGENAME,
+														Context.CONTEXT_IGNORE_SECURITY);
+										XposedHelpers.setObjectField(
+												barBackground, "mGradient",
+												Statics.getDrawable(nav_style,
+														true, -1, tsContext));
+									} else {
+										int color = XsPref.getInt(
+												Statics.PREF_COLOR_NAV, -1);
+										if (color == -1)
+											color = 0x50000000;
+										XposedHelpers.setObjectField(
+												barBackground, "mGradient",
+												Statics.getDrawable(nav_style,
+														true, color, null));
+									}
+								}
+							});
+				}
 			}
 		} catch (Throwable e) {
 			XposedBridge.log(e);
@@ -280,120 +296,136 @@ public class X_TranslucentStyle_Hook implements
 			final XSharedPreferences XsPref = new XSharedPreferences(
 					Statics.PACKAGENAME, Statics.PREFERENCE_NAME);
 
-			if (!XsPref.getBoolean(Statics.PREF_CM, false))
-				return;
+			if (XsPref.getBoolean(Statics.PREF_CM, false)) {
 
-			final int status_style = XsPref.getInt(Statics.PREF_STATUSDRAWABLE,
-					0);
-			final int nav_style = XsPref.getInt(Statics.PREF_NAVDRAWABLE, 0);
+				final int status_style = XsPref.getInt(
+						Statics.PREF_STATUSDRAWABLE, 0);
+				final int nav_style = XsPref
+						.getInt(Statics.PREF_NAVDRAWABLE, 0);
 
-			if (status_style > 0 && status_style < 11) {
-				Class<?> clazz = XposedHelpers.findClass(Statics.SYSTEMUI
-						+ ".statusbar.phone.PhoneStatusBarTransitions",
-						lpparam.classLoader);
+				if (status_style > 0 && status_style < 11) {
+					Class<?> clazz = XposedHelpers.findClass(Statics.SYSTEMUI
+							+ ".statusbar.phone.PhoneStatusBarTransitions",
+							lpparam.classLoader);
 
-				XposedBridge.hookAllConstructors(clazz, new XC_MethodHook() {
-					@Override
-					protected void afterHookedMethod(MethodHookParam param)
-							throws Throwable {
-						Object thisObj = param.thisObject;
-						Object barBackground = XposedHelpers.getObjectField(
-								thisObj, "mBarBackground");
-						if (Statics.isBitmap(status_style)) {
-							View v = (View) XposedHelpers.getObjectField(
-									thisObj, "mView");
-							Context tsContext = v.getContext()
-									.createPackageContext(Statics.PACKAGENAME,
-											Context.CONTEXT_IGNORE_SECURITY);
-							XposedHelpers.setObjectField(barBackground,
-									"mGradient", Statics.getDrawable(nav_style,
-											false, -1, tsContext));
-						} else {
-							int color = XsPref.getInt(
-									Statics.PREF_COLOR_STATUS, -1);
-							if (color == -1)
-								color = 0x50000000;
-							XposedHelpers.setObjectField(barBackground,
-									"mGradient", Statics.getDrawable(
-											status_style, false, color, null));
-						}
-					}
-				});
-			}
-
-			if (nav_style > 0 && nav_style < 11) {
-				Class<?> clazz = XposedHelpers.findClass(Statics.SYSTEMUI
-						+ ".statusbar.phone.NavigationBarTransitions",
-						lpparam.classLoader);
-
-				XposedBridge.hookAllConstructors(clazz, new XC_MethodHook() {
-					@Override
-					protected void afterHookedMethod(MethodHookParam param)
-							throws Throwable {
-						Object thisObj = param.thisObject;
-						Object barBackground = XposedHelpers.getObjectField(
-								thisObj, "mBarBackground");
-						if (Statics.isBitmap(nav_style)) {
-							View v = (View) XposedHelpers.getObjectField(
-									thisObj, "mView");
-							Context tsContext = v.getContext()
-									.createPackageContext(Statics.PACKAGENAME,
-											Context.CONTEXT_IGNORE_SECURITY);
-							XposedHelpers.setObjectField(barBackground,
-									"mGradient", Statics.getDrawable(nav_style,
-											true, -1, tsContext));
-						} else {
-							int color = XsPref.getInt(Statics.PREF_COLOR_NAV,
-									-1);
-							if (color == -1)
-								color = 0x50000000;
-							XposedHelpers.setObjectField(barBackground,
-									"mGradient", Statics.getDrawable(nav_style,
-											true, color, null));
-						}
-					}
-				});
-
-				Class<?> clazz2 = XposedHelpers.findClass(Statics.SYSTEMUI
-						+ ".statusbar.phone.NavigationBarView",
-						lpparam.classLoader);
-				XposedHelpers.findAndHookMethod(clazz2, "updateResources",
-						Resources.class, new XC_MethodHook() {
-							@Override
-							protected void afterHookedMethod(
-									MethodHookParam param) throws Throwable {
-								Object thisObj = param.thisObject;
-								Object barTransitions = XposedHelpers
-										.getObjectField(thisObj,
-												"mBarTransitions");
-								Object barBackground = XposedHelpers
-										.getObjectField(barTransitions,
-												"mBarBackground");
-								if (Statics.isBitmap(nav_style)) {
-									View v = (View) XposedHelpers
-											.getObjectField(barTransitions,
-													"mView");
-									Context tsContext = v
-											.getContext()
-											.createPackageContext(
-													Statics.PACKAGENAME,
-													Context.CONTEXT_IGNORE_SECURITY);
-									XposedHelpers.setObjectField(barBackground,
-											"mGradient", Statics.getDrawable(
-													nav_style, true, -1,
-													tsContext));
-								} else {
-									int color = XsPref.getInt(
-											Statics.PREF_COLOR_NAV, -1);
-									if (color == -1)
-										color = 0x50000000;
-									XposedHelpers.setObjectField(barBackground,
-											"mGradient", Statics.getDrawable(
-													nav_style, true, color,
-													null));
+					XposedBridge.hookAllConstructors(clazz,
+							new XC_MethodHook() {
+								@Override
+								protected void afterHookedMethod(
+										MethodHookParam param) throws Throwable {
+									Object thisObj = param.thisObject;
+									Object barBackground = XposedHelpers
+											.getObjectField(thisObj,
+													"mBarBackground");
+									if (Statics.isBitmap(status_style)) {
+										View v = (View) XposedHelpers
+												.getObjectField(thisObj,
+														"mView");
+										Context tsContext = v
+												.getContext()
+												.createPackageContext(
+														Statics.PACKAGENAME,
+														Context.CONTEXT_IGNORE_SECURITY);
+										XposedHelpers.setObjectField(
+												barBackground, "mGradient",
+												Statics.getDrawable(nav_style,
+														false, -1, tsContext));
+									} else {
+										int color = XsPref.getInt(
+												Statics.PREF_COLOR_STATUS, -1);
+										if (color == -1)
+											color = 0x50000000;
+										XposedHelpers.setObjectField(
+												barBackground, "mGradient",
+												Statics.getDrawable(
+														status_style, false,
+														color, null));
+									}
 								}
-							}
-						});
+							});
+				}
+
+				if (nav_style > 0 && nav_style < 11) {
+					Class<?> clazz = XposedHelpers.findClass(Statics.SYSTEMUI
+							+ ".statusbar.phone.NavigationBarTransitions",
+							lpparam.classLoader);
+
+					XposedBridge.hookAllConstructors(clazz,
+							new XC_MethodHook() {
+								@Override
+								protected void afterHookedMethod(
+										MethodHookParam param) throws Throwable {
+									Object thisObj = param.thisObject;
+									Object barBackground = XposedHelpers
+											.getObjectField(thisObj,
+													"mBarBackground");
+									if (Statics.isBitmap(nav_style)) {
+										View v = (View) XposedHelpers
+												.getObjectField(thisObj,
+														"mView");
+										Context tsContext = v
+												.getContext()
+												.createPackageContext(
+														Statics.PACKAGENAME,
+														Context.CONTEXT_IGNORE_SECURITY);
+										XposedHelpers.setObjectField(
+												barBackground, "mGradient",
+												Statics.getDrawable(nav_style,
+														true, -1, tsContext));
+									} else {
+										int color = XsPref.getInt(
+												Statics.PREF_COLOR_NAV, -1);
+										if (color == -1)
+											color = 0x50000000;
+										XposedHelpers.setObjectField(
+												barBackground, "mGradient",
+												Statics.getDrawable(nav_style,
+														true, color, null));
+									}
+								}
+							});
+
+					Class<?> clazz2 = XposedHelpers.findClass(Statics.SYSTEMUI
+							+ ".statusbar.phone.NavigationBarView",
+							lpparam.classLoader);
+					XposedHelpers.findAndHookMethod(clazz2, "updateResources",
+							Resources.class, new XC_MethodHook() {
+								@Override
+								protected void afterHookedMethod(
+										MethodHookParam param) throws Throwable {
+									Object thisObj = param.thisObject;
+									Object barTransitions = XposedHelpers
+											.getObjectField(thisObj,
+													"mBarTransitions");
+									Object barBackground = XposedHelpers
+											.getObjectField(barTransitions,
+													"mBarBackground");
+									if (Statics.isBitmap(nav_style)) {
+										View v = (View) XposedHelpers
+												.getObjectField(barTransitions,
+														"mView");
+										Context tsContext = v
+												.getContext()
+												.createPackageContext(
+														Statics.PACKAGENAME,
+														Context.CONTEXT_IGNORE_SECURITY);
+										XposedHelpers.setObjectField(
+												barBackground, "mGradient",
+												Statics.getDrawable(nav_style,
+														true, -1, tsContext));
+									} else {
+										int color = XsPref.getInt(
+												Statics.PREF_COLOR_NAV, -1);
+										if (color == -1)
+											color = 0x50000000;
+										XposedHelpers.setObjectField(
+												barBackground, "mGradient",
+												Statics.getDrawable(nav_style,
+														true, color, null));
+									}
+								}
+							});
+				}
 			}
 		} catch (Throwable e) {
 			XposedBridge.log(e);
