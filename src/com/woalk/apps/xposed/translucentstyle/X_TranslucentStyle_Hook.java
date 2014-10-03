@@ -49,7 +49,7 @@ public class X_TranslucentStyle_Hook implements
 
 		if (status_style > 0) {
 			try {
-				if (XsPref.getBoolean(Statics.PREF_RES1, true)) {
+				if (XsPref.getBoolean(Statics.PREF_RES1, false)) {
 					resparam.res.setReplacement("com.android.systemui",
 							"drawable", "status_background",
 							new XResources.DrawableLoader() {
@@ -84,7 +84,7 @@ public class X_TranslucentStyle_Hook implements
 				XposedBridge.log(e);
 			}
 			try {
-				if (XsPref.getBoolean(Statics.PREF_RES2, true)) {
+				if (XsPref.getBoolean(Statics.PREF_RES2, false)) {
 					resparam.res.setReplacement("com.android.systemui",
 							"drawable", "status_bar_background_transparent",
 							new XResources.DrawableLoader() {
@@ -121,7 +121,7 @@ public class X_TranslucentStyle_Hook implements
 		}
 		if (nav_style > 0) {
 			try {
-				if (XsPref.getBoolean(Statics.PREF_RES1, true)) {
+				if (XsPref.getBoolean(Statics.PREF_RES1, false)) {
 					resparam.res.setReplacement("com.android.systemui",
 							"drawable", "nav_background",
 							new XResources.DrawableLoader() {
@@ -155,7 +155,7 @@ public class X_TranslucentStyle_Hook implements
 				XposedBridge.log(e);
 			}
 			try {
-				if (XsPref.getBoolean(Statics.PREF_RES2, true)) {
+				if (XsPref.getBoolean(Statics.PREF_RES2, false)) {
 					resparam.res.setReplacement("com.android.systemui",
 							"drawable", "navigation_background_transparent",
 							new XResources.DrawableLoader() {
@@ -199,7 +199,7 @@ public class X_TranslucentStyle_Hook implements
 			final XSharedPreferences XsPref = new XSharedPreferences(
 					Statics.PACKAGENAME, Statics.PREFERENCE_NAME);
 
-			if (!XsPref.getBoolean(Statics.PREF_M, true))
+			if (!XsPref.getBoolean(Statics.PREF_M, false))
 				return;
 
 			final int status_style = XsPref.getInt(Statics.PREF_STATUSDRAWABLE,
@@ -280,7 +280,7 @@ public class X_TranslucentStyle_Hook implements
 			final XSharedPreferences XsPref = new XSharedPreferences(
 					Statics.PACKAGENAME, Statics.PREFERENCE_NAME);
 
-			if (!XsPref.getBoolean(Statics.PREF_CM, true))
+			if (!XsPref.getBoolean(Statics.PREF_CM, false))
 				return;
 
 			final int status_style = XsPref.getInt(Statics.PREF_STATUSDRAWABLE,
