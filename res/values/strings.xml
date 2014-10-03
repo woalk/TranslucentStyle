@@ -30,6 +30,9 @@
 	<string name="str_android_l">Android “L”</string>
 	<string name="str_sense6">Sense 6</string>
 	<string name="str_custom">Custom</string>
+	<string name="str_check_res1">Try replacing the AOSP resource</string>
+	<string name="str_check_res2">Try replacing the HTC resource</string>
+	<string name="str_check_m">Try replacing the variable</string>
 	
 	<string name="hint_hex" translatable="false">#AARRGGBB</string>
 	
