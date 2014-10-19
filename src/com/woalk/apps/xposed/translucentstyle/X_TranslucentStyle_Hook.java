@@ -231,7 +231,8 @@ public class X_TranslucentStyle_Hook implements
 														Context.CONTEXT_IGNORE_SECURITY);
 										XposedHelpers.setObjectField(
 												barBackground, "mGradient",
-												Statics.getDrawable(nav_style,
+												Statics.getDrawable(
+														status_style,
 														false, -1, tsContext));
 									} else {
 										int color = XsPref.getInt(
@@ -328,7 +329,8 @@ public class X_TranslucentStyle_Hook implements
 														Context.CONTEXT_IGNORE_SECURITY);
 										XposedHelpers.setObjectField(
 												barBackground, "mGradient",
-												Statics.getDrawable(nav_style,
+												Statics.getDrawable(
+														status_style,
 														false, -1, tsContext));
 									} else {
 										int color = XsPref.getInt(
