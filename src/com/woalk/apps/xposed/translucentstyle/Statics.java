@@ -2,7 +2,6 @@ package com.woalk.apps.xposed.translucentstyle;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.GradientDrawable.Orientation;
@@ -105,7 +104,8 @@ public class Statics {
 		}
 
 		public static Drawable getSolid(int color) {
-			return new ColorDrawable(color);
+			return new GradientDrawable(Orientation.TOP_BOTTOM, new int[] {
+					color, color });
 		}
 
 		public static Drawable getSense5(boolean isNav, Context tsContext) {
