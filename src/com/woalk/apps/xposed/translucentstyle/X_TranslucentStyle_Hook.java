@@ -118,6 +118,22 @@ public class X_TranslucentStyle_Hook implements
 			} catch (Throwable e) {
 				XposedBridge.log(e);
 			}
+			try {
+				if (XsPref.getBoolean(Statics.PREF_RES3, false)) {
+					if (status_style == Statics.VALUE_SOLID) {
+						int color = XsPref
+								.getInt(Statics.PREF_COLOR_STATUS, -1);
+						resparam.res
+								.setReplacement(
+										"com.android.systemui",
+										"color",
+										"system_bar_background_semi_transparent",
+										color);
+					}
+				}
+			} catch (Throwable e) {
+				XposedBridge.log(e);
+			}
 		}
 		if (nav_style > 0) {
 			try {

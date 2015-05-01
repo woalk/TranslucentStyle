@@ -25,6 +25,8 @@ public class Statics {
 																		// preference
 	public static final String PREF_RES2 = PACKAGENAME + ".PREF_RES2"; // boolean
 																		// preference
+	public static final String PREF_RES3 = PACKAGENAME + ".PREF_RES3"; // boolean
+	// preference
 	public static final String PREF_M = PACKAGENAME + ".PREF_M"; // boolean
 																	// preference
 	public static final String PREF_CM = PACKAGENAME + ".PREF_CM"; // boolean

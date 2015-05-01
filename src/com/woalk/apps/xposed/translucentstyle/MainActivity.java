@@ -181,6 +181,7 @@ public class MainActivity extends Activity {
 
 		boolean res1 = sPref.getBoolean(Statics.PREF_RES1, false);
 		boolean res2 = sPref.getBoolean(Statics.PREF_RES2, false);
+		boolean res3 = sPref.getBoolean(Statics.PREF_RES3, false);
 		boolean m = sPref.getBoolean(Statics.PREF_M, false);
 		boolean cm = sPref.getBoolean(Statics.PREF_CM, false);
 
@@ -188,11 +189,13 @@ public class MainActivity extends Activity {
 		CheckBox check2 = ((CheckBox) findViewById(R.id.checkBox2));
 		CheckBox check3 = ((CheckBox) findViewById(R.id.checkBox3));
 		CheckBox check4 = ((CheckBox) findViewById(R.id.checkBox4));
+		CheckBox check5 = ((CheckBox) findViewById(R.id.checkBox5));
 
 		check1.setChecked(res1);
 		check2.setChecked(res2);
 		check3.setChecked(m);
 		check4.setChecked(cm);
+		check5.setChecked(res3);
 
 		check1.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			@Override
@@ -227,6 +230,15 @@ public class MainActivity extends Activity {
 					boolean isChecked) {
 				SharedPreferences.Editor edit = sPref.edit();
 				edit.putBoolean(Statics.PREF_CM, isChecked);
+				edit.apply();
+			}
+		});
+		check5.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView,
+					boolean isChecked) {
+				SharedPreferences.Editor edit = sPref.edit();
+				edit.putBoolean(Statics.PREF_RES3, isChecked);
 				edit.apply();
 			}
 		});
