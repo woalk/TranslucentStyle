@@ -33,6 +33,7 @@
 	<string name="str_check_res1">Try replacing the AOSP resource</string>
 	<string name="str_check_res2">Try replacing the HTC resource</string>
     <string name="str_check_res3">Try replacing the AOSP Lollipop resource</string>
+    <string name="str_check_res4">Try replacing the Xperia Lollipop resource</string>
 	<string name="str_check_m">Try replacing the variable</string>
 	
 	<string name="hint_hex" translatable="false">#AARRGGBB</string>

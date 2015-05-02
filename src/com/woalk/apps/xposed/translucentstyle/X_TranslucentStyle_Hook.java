@@ -134,6 +134,42 @@ public class X_TranslucentStyle_Hook implements
 			} catch (Throwable e) {
 				XposedBridge.log(e);
 			}
+			try {
+				if (XsPref.getBoolean(Statics.PREF_RES4, false)) {
+					resparam.res.setReplacement("com.android.systemui",
+							"drawable",
+							"status_bar_gradient_background_non_skinnable",
+							new XResources.DrawableLoader() {
+								@Override
+								public Drawable newDrawable(XResources res,
+										int id) throws Throwable {
+									if (Statics.isBitmap(status_style))
+										return Statics
+												.getDrawable(
+														status_style,
+														false,
+														-1,
+														AndroidAppHelper
+																.currentApplication()
+																.getApplicationContext()
+																.createPackageContext(
+																		Statics.PACKAGENAME,
+																		Context.CONTEXT_IGNORE_SECURITY));
+									else {
+										int color = XsPref.getInt(
+												Statics.PREF_COLOR_STATUS, -1);
+										if (color == -1)
+											color = 0x50000000;
+										return Statics.getDrawable(
+												status_style, false, color,
+												null);
+									}
+								}
+							});
+				}
+			} catch (Throwable e) {
+				XposedBridge.log(e);
+			}
 		}
 		if (nav_style > 0) {
 			try {
@@ -197,6 +233,41 @@ public class X_TranslucentStyle_Hook implements
 											color = 0x50000000;
 										return Statics.getDrawable(nav_style,
 												true, color, null);
+									}
+								}
+							});
+				}
+			} catch (Throwable e) {
+				XposedBridge.log(e);
+			}
+			try {
+				if (XsPref.getBoolean(Statics.PREF_RES4, false)) {
+					resparam.res.setReplacement("com.android.systemui",
+							"drawable",
+							"navigation_bar_gradient_background_non_skinnable",
+							new XResources.DrawableLoader() {
+								@Override
+								public Drawable newDrawable(XResources res,
+										int id) throws Throwable {
+									if (Statics.isBitmap(nav_style))
+										return Statics
+												.getDrawable(
+														nav_style,
+														false,
+														-1,
+														AndroidAppHelper
+																.currentApplication()
+																.getApplicationContext()
+																.createPackageContext(
+																		Statics.PACKAGENAME,
+																		Context.CONTEXT_IGNORE_SECURITY));
+									else {
+										int color = XsPref.getInt(
+												Statics.PREF_COLOR_NAV, -1);
+										if (color == -1)
+											color = 0x50000000;
+										return Statics.getDrawable(nav_style,
+												false, color, null);
 									}
 								}
 							});
