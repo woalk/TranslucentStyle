@@ -7,4 +7,7 @@
     <color name="l_dark">#c0000000</color>
     <color name="l_light">#12000000</color>
     
+    <color name="primaryColor">#c0e0f0</color>
+    <color name="primaryDarkColor">#accad9</color>
+    <color name="secondaryColor">#b7747b</color>
 </resources>

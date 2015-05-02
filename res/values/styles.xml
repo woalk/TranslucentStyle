@@ -10,17 +10,17 @@
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
         -->
+        <item name="android:actionBarStyle">@style/ActionBarTheme</item>
+        <item name="android:fastScrollEnabled">false</item>
     </style>
 
     <style name="ActionBarTheme" parent="@android:style/Widget.Holo.ActionBar" >
-        <item name="android:background">#c0e0f0</item>
+        <item name="android:background">@color/primaryColor</item>
     </style>
 
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-        <item name="android:actionBarStyle">@style/ActionBarTheme</item>
-        <item name="android:fastScrollEnabled">false</item>
     </style>
 
 </resources>
